@@ -1,0 +1,89 @@
+		body {
+			background-color: #ccc;
+			padding: 5px;
+			margin: 5px;
+			font-size: 11pt;
+		}
+		div#title a {
+			text-decoration: none;
+			font-size: 20pt;
+		}
+		a, a:hover {
+			text-decoration: none;
+			font-size: 14pt;
+		}
+		td {
+			padding: 5px;
+		}
+		#add_box {
+			background-color: #eee;
+			display: none;
+			position: absolute;
+			left: 35%;
+			top: 20%;
+			padding: 10px;
+			box-shadow: 4px 4px 50px 20px #000, 6px 6px 80px 20px blue;
+		}
+		#alert {
+			background-color: #eee;
+			position: absolute;
+			left: 35%;
+			top: 20%;
+			padding: 5px;
+			box-shadow: 4px 4px 50px 20px #000, 6px 6px 80px 20px blue;
+		}
+		#wrap {
+			width: 100%;
+		}
+		#content {
+			background-color: #eee;
+		}
+		#mainlist {
+			width:100%;
+		}
+
+		#mainlist {
+		  margin: 0 auto;
+		  font-size: 1.2em;
+		  margin-bottom: 15px;
+		}
+
+		#mainlist thead {
+		  cursor: pointer;
+		  background: #c9dff0;
+		}
+		#mainlist thead tr th { 
+		  font-weight: bold;
+		  padding: 12px 30px;
+		  padding-left: 42px;
+		}
+		#mainlist thead tr th span { 
+		  padding-right: 20px;
+		  background-repeat: no-repeat;
+		  background-position: 100% 100%;
+		}
+
+		#mainlist thead tr th.headerSortUp, #mainlist thead tr th.headerSortDown {
+		  background: #acc8dd;
+		}
+
+		#mainlist thead tr th.headerSortUp span {
+		  background-image: url('up-arrow.png');
+		}
+		#mainlist thead tr th.headerSortDown span {
+		  background-image: url('down-arrow.png');
+		}
+
+		#mainlist tbody tr { 
+		  color: #555;
+		}
+		#mainlist tbody tr td {
+		  text-align: center;
+		  padding: 15px 10px;
+		}
+		#mainlist tbody tr td.lalign {
+		  text-align: left;
+		}
+		.uri a {
+			float:left;
+		};
