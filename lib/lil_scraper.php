@@ -2,13 +2,13 @@
 
 require('html2array.php');
 
-if ( isset($argv) || isset($_POST['callback']) ) {
+if ( isset($_POST['callback']) ) {
 
 	$data_file = 'data.json';
 	$json = json_decode(file_get_contents($data_file), true);
 
 	$uri = null;
-
+/*
 	if ( $_POST['uri'] ) {
 		$uri = $_POST['uri'];
 
@@ -22,19 +22,19 @@ if ( isset($argv) || isset($_POST['callback']) ) {
 		}
 
 	} else {
-
+*/
 	foreach ( $json as $key => $array ) {
+
 		$matches = scrape($key);
 
 		if ( $matches && $matches[1] ) {
 			$arr = explode( ' ', $matches[1] );
 			$data = array( 'app' => strtolower($arr[0]), 'uri' => $key, 'ver' => $arr[1] );
-			//$json = array_merge($json, $data);
 			$json[$key] = $data;
 		}
 	}
 
-	}
+	//}
 
 	if ( $json ) {
 		echo json_encode( $json );
@@ -97,7 +97,7 @@ function scrape_latest( $key, $uri ) {
 		case 'wordpress':
 			$dom = $parser->toArray();
 			$info = $dom[0]['innerHTML'];
-			preg_match( '/WordPress.+Version ([\d\.]+)/', $info, $matches );
+			preg_match( '/WordPress \(Version ([\d\.]+)/', $info, $matches );
 			if ( $matches && $matches[1] ) {
 				$data = array( 'app' => strtolower($key), 'uri' => $uri, 'ver' => $matches[1] );
 				return $data;

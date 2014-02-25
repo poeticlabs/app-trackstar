@@ -50,7 +50,6 @@ function checkVersions() {
 		  url: 'lib/lil_scraper.php',
 		  data: { get_latest: 1 },
 		  success: function( latest ) {
-			console.log(latest);
 
 			$.ajax({
 			  type: 'POST',
@@ -59,12 +58,17 @@ function checkVersions() {
 			  data: { callback: 1 },
 			  success: function( data ) {
 
-				$.each( data, function(key) {
-					console.log( data[key].uri, data[key].app, data[key].ver, latest[ data[key].app ].ver, $('tr[class="' + data[key].uri + '"]').children().length );
+				for ( var key in data ) {
+//				$.each( data, function(key) {
+					var app = data[key].app;
+					console.log ( latest );
+					console.log ( data );
+
+					if ( latest[ app ] != undefined ) {
 
 					$('tr[class="' + data[key].uri + '"]').children('.app').html( data[key].app );
 
-					if ( data[key].ver == latest[ data[key].app ].ver ) {
+					if ( data[key].ver == latest[ app ].ver ) {
 						$('tr[class="' + data[key].uri + '"]').children().css( 'background-color', '#eeffee' );
 						$('tr[class="' + data[key].uri + '"]').children('.ver').html( data[key].ver );
 					} else {
@@ -72,7 +76,10 @@ function checkVersions() {
 						$('tr[class="' + data[key].uri + '"]').children('.ver').html( data[key].ver + ' => ' + latest[ data[key].app ].ver );
 					}
 
-				});
+					}
+
+				}
+//				});
 
 			  } // success
 
